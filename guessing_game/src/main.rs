@@ -1,4 +1,4 @@
-use std::io;
+/*use std::io;
 // io stands for input/output library which comes from standard library
 //Rust has a set of items defined in the standard library that it brings into the scope of every program. This set is called the prelude.
 //If a type you want to use isn’t in the prelude, you have to bring that type into scope explicitly with a use statement.
@@ -19,6 +19,27 @@ fn main() {
         //An instance of result has "expect" method
         //If you don’t call expect, the program will compile, but you’ll get a warning:
         //Just to give you warning of possible error that hasn't handled.
+        .expect("Failed to read line");
+
+    println!("You guessed: {guess}");
+}*/
+
+use std::io;
+use rand::Rng;
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
+
+    println!("Please input your guess.");
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
         .expect("Failed to read line");
 
     println!("You guessed: {guess}");
