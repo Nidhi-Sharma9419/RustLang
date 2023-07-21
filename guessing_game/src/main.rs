@@ -30,7 +30,10 @@ use rand::Rng;
 fn main() {
     println!("Guess the number!");
 
-    let secret_number = rand::thread_rng().gen_range(1..=100);
+    let secret_number = rand::thread_rng().gen_range(1..=100);//start..=end
+    //Rng trait defines methods that random number generators implement, and this trait must be in scope for us to use those methods.
+    //rand::thread_rng function that gives us the particular random number generator we’re going to use
+    //gen_range method is defined by the Rng trait that we brought into scope with the use rand::Rng; statement.
 
     println!("The secret number is: {secret_number}");
 
