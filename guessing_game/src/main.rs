@@ -47,14 +47,25 @@ fn main() {
         .read_line(&mut guess)
         .expect("Failed to read line");
 
-        let guess: u32 = guess.trim().parse().expect("Please type a number!");  
+        //let guess: u32 = guess.trim().parse().expect("Please type a number!");  
         /*We bind this new variable to the expression guess.trim().parse(). The guess in the expression refers to the original guess variable that contained the input as a string. The trim method on a String instance will eliminate any whitespace at the beginning and end, which we must do to be able to compare the string to the u32, which can only contain numerical data. The user must press enter to satisfy read_line and input their guess, which adds a newline character to the string. For example, if the user types 5 and presses enter, guess looks like this: 5\n. The \n represents “newline.” (On Windows, pressing enter results in a carriage return and a newline, \r\n.) The trim method eliminates \n or \r\n, resulting in just 5.*/  
         //The parse method on strings converts a string to another type
+        
+        
+        //Handling invalid input
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
     println!("You guessed: {guess}");
 
     match guess.cmp(&secret_number) {
         Ordering::Less => println!("Too small!"),
         Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
+        //Ordering::Equal => println!("You win!"),
+        Ordering::Equal => {
+            println!("You win!");
+            break;
+        }
     }
 }
