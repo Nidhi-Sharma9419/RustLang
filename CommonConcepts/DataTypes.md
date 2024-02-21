@@ -80,3 +80,26 @@ fn main() {
  let a = [1, 2, 3, 4, 5];
 }
 
+  - Accessing Array Elements 
+  An array is a single chunk of memory allocated on the stack. You can access 
+elements of an array using indexing, like this:
+fn main() {
+ let a = [1, 2, 3, 4, 5];
+ let first = a[0];
+ let second = a[1];
+}
+
+For this code 
+fn main() {
+ let a = [1, 2, 3, 4, 5];
+ let index = 10;
+ let element = a[index];
+
+ println!("The value of element is: {}", element);
+}
+It will generate runtime error
+BENEFIT : Rust protects you against 
+this kind of error by immediately exiting instead of allowing the memory 
+access and continuing.
+
+
