@@ -89,3 +89,30 @@ let user2 = User {
  ..user1
 };
 `
+
+## Using Tuple Structs Without Named Fields to Create Different Types
+`tuple structs`
+
+E.g. 
+*struct struct name (types in tuple)*
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+
+let black = Color(0,0,0);
+let origin = Point(0,0,0);
+
+e, a 
+function that takes a parameter of type Color cannot take a Point as an argument, even though both types are made up of three i32 values. 
+This is what differenntiate struct tuples from tuples.
+
+However, tuple struct instances behave similarly to tuples in that you can destructure them into their individual pieces, access individual values using dot notation followed by the index, etc. For example:
+`
+let color = Color(255, 0, 0);
+let Point(x, y, z) = origin;
+
+println!("Red value: {}", color.0); // Accessing the first field of the color tuple struct
+println!("X coordinate: {}", x);    // Accessing the first field of the point tuple struct after destructuring
+
+`
+
+
