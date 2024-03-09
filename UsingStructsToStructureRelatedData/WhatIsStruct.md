@@ -47,5 +47,45 @@ let mut user1 = User {
 user1.email = String::from("anotheremail@example.com");
 `
 NOTE: Entire instance must be mutable
+It makes sense to name the function parameters with the same name as 
+the struct fields.
 
-SEE struct.rs for implementation pov
+#SEE struct.rs for implementation pov
+
+
+
+## Using the `Field Init Shorthand` When Variables and Fields 
+Have the Same Name
+`
+fn build_user(email: String, username: String) -> User {
+ User {
+ email,
+ username,
+ active: true,
+ sign_in_count: 1,
+ }
+}
+`
+
+## Creating Instances from Other Instances with Struct Update Syntax\
+`struct update syntax`
+E.g.
+Creating new instance
+Without update syntax:
+`
+let user2 = User {
+ email: String::from("another@example.com"),
+ username: String::from("anotherusername567"),
+ active: user1.active,
+ sign_in_count: user1.sign_in_count,
+};
+`
+
+Using struct update syntax
+`
+let user2 = User {
+ email: String::from("another@example.com"),
+ username: String::from("anotherusername567"),
+ ..user1
+};
+`
