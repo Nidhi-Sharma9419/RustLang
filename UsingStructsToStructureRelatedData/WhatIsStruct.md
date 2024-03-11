@@ -112,7 +112,80 @@ let Point(x, y, z) = origin;
 
 println!("Red value: {}", color.0); // Accessing the first field of the color tuple struct
 println!("X coordinate: {}", x);    // Accessing the first field of the point tuple struct after destructuring
-
 `
 
+## Unit-Like Structs Without Any Fields
+Structs that don't have any fields: `unit-like structs`  (),the unit type
 
+It’s possible for structs to store references to data owned by something 
+else, but to do so requires the use of `lifetimes`
+
+SEE code rectangles.rs
+
+## Refactoring with Tuples
+`
+fn main() {
+ let rect1 = (30, 50);
+ println!(
+ "The area of the rectangle is {} square pixels.",
+  $area(rect1)
+ );
+}
+fn area(dimensions: (u32, u32)) -> u32 {
+ @ dimensions.0 * dimensions.1
+}
+`
+
+Tuples let us add a bit of structure, and 
+we’re now passing just one argument $. But in another way, this version is less 
+clear: tuples don’t name their elements, so our calculation has become more 
+confusing because we have to index into the parts of the tuple @.
+
+
+## Refactoring with Structs: Adding More Meaning
+area function is now defined with one parameter
+rectangle, whose type is an immutable borrow of a struct Rectangle
+instance
+we want to borrow the struct rather than take ownership of it.
+This way, main retains its ownership and can continue using rect1, which is the reason we use the & in the function signature 
+and where we call the function.
+The area function accesses the width and height fields of the Rectangle instance . 
+it gives descriptive names to the values rather than using the tuple index values of 0 and 1.
+
+This is a win for clarity.
+
+struct Rectangle {
+ width: u32,
+ height: u32,
+}
+fn main() {
+ let rect1 = Rectangle { width: 30, height: 50 };
+ println!(
+ "The area of the rectangle is {} square pixels.",
+ area(&rect1)
+ );
+}
+fn area(rectangle: &Rectangle) -> u32 {
+ rectangle.width * rectangle.height
+}
+
+## Adding Useful Functionality with Derived Traits
+`Debug`
+ The println! macro call will now look like println!("rect1 is 
+{:?}", rect1);. Putting the specifier :? inside the curly brackets tells println! we want to use an output format called Debug.
+
+
+
+Functionality to print debugging information ,we add the annotation `#[derive(Debug)]` just before the struct definition
+
+
+bit easier to read; in 
+those cases, we can use `{:#?}` instead of {:?} in the println! string. 
+
+It will output like :
+`
+rect1 is Rectangle {
+ width: 30,
+ height: 50
+}
+`
