@@ -1,3 +1,5 @@
+Rust general purpose programming language.
+
 In Rust, the compiler plays a gatekeeper role by refusing to compile code with these elusive bugs, including concurrency bugs. By working alongside the compiler, the team can spend their time focusing on the program’s logic rather than chasing down bugs.
 
 Contemporary developer tools:
