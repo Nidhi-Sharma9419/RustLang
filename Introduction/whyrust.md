@@ -9,3 +9,5 @@ It's gonna help in learning topics like operating system development.
 use Rust in production for a variety of tasks, including command line tools, web services, DevOps tooling, embedded devices, audio and video analysis and transcoding, cryptocurrencies, bioinformatics, search engines, Internet of Things applications, machine learning, and even major parts of the Firefox web browser.
 
 It has concept of DATA OWNERSHIP built into the language.
+
+Monadic type a concept of category theory, refers to the type that implement monadic operations like `bind` and `map`.
