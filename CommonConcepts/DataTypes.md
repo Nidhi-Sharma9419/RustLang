@@ -2,7 +2,8 @@ Rust has two data type subsets:
 1. Scalar
 2. Compound
 
-Rust is statically typed language
+Rust is statically typed language.
+Type is known at compile time.
 
 #Scalar
 Represents single value
@@ -37,8 +38,10 @@ fn main() {
 4. Characters
 Represents Unicode Scalar Value, it means more than just ASCII, Chinese, Japanese, Korean and Emoji
 anges from U+0000 to U+D7FF and U+E000 to U+10FFFF 
-char : use single quote ''
-string : use double quote ""
+char : use single quote ''.
+Used for storing a single character. 4 bytes in size. 
+string : use double quote "".
+Used to store text.
 
 fn main() {
  let c = 'z';
@@ -46,6 +49,7 @@ fn main() {
  let heart_eyed_cat = '😻';
 }
 
+=> `isize` and `usize` are only for numbers that refer to a memory location, such as indexes. 
 
 #Compound
 Group multiple values in one type
@@ -59,6 +63,7 @@ fn main() {
  let tup = (500, 6.4, 1);
  let (x, y, z) = tup; //destructuring
  println!("The value of y is: {}", y);
+ println!("{}",tup.1); // 6.4
 }
 
 we can access a tuple element directly by using a period (.) followed by the index of the value we want to access.
@@ -72,10 +77,21 @@ fn main() {
 
 This program creates a tuple, x, and then makes new variables for each element by using their index. As with most programming languages, the first index in a tuple is 0.
 
+=> Tuple structs can be declared as follows:
+struct myTuple(bool, u32, f64);
+
+A value of the type myTuple can be created as:
+let tuple = myTuple(false, 2, 3.0);
+
+can also be doen:
+type myTup = (bool, u32, f64);
+
 
 2. arrays
 Every element of the array must be of the same size.
 arrays in Rust have a fixed length: once declared, they cannot grow or shrink in size.
+
+let arr: [u32; 3] = [1,2,3];
 fn main() {
  let a = [1, 2, 3, 4, 5];
 }
@@ -87,6 +103,7 @@ fn main() {
  let a = [1, 2, 3, 4, 5];
  let first = a[0];
  let second = a[1];
+ println!("{}", a[2]);
 }
 
 For this code 
