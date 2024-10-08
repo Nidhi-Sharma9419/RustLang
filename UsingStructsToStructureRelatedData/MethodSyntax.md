@@ -23,7 +23,8 @@ impl Rectangle {
         self.height = new_height;
     }
 }
-
+`
+`
 fn main() {
     let mut my_rectangle = Rectangle { width: 5, height: 10 };
 
