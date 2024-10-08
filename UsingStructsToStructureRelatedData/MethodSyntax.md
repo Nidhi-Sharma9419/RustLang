@@ -5,7 +5,8 @@ In Rust, when defining methods for a struct, the first parameter of the method i
 name, parentheses, and any arguments.
 Let's illustrate this with an example:
 
-`struct Rectangle {
+```
+struct Rectangle {
     width: u32,
     height: u32,
 }
@@ -21,9 +22,9 @@ impl Rectangle {
         self.width = new_width;
         self.height = new_height;
     }
-}`
+}
 
-`fn main() {
+fn main() {
     let mut my_rectangle = Rectangle { width: 5, height: 10 };
 
     // Accessing the area of the rectangle using a method
@@ -34,7 +35,8 @@ impl Rectangle {
 
     println!("New width: {}", my_rectangle.width);
     println!("New height: {}", my_rectangle.height);
-}`
+}
+```
 In this example, we define a Rectangle struct representing rectangles with width and height. We then implement two methods for this struct: area to calculate the area of the rectangle and resize to modify its dimensions.
 
 Notice that both methods take self as their first parameter. When calling these methods, we don't need to explicitly pass the instance of the struct they are called on; Rust handles this automatically. This allows the methods to access the struct's data (width and height) using self, making it easy to manipulate the data associated with the struct instance.
